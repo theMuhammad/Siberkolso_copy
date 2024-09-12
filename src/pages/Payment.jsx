@@ -6,21 +6,20 @@ const Payment = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Simulate a loading delay (e.g., API call)
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 2000); // 2 seconds
+        }, 2000); 
 
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <div className="container mx-auto w-[75%] p-8">
+        <div className="container mx-auto w-[90%] md:w-[75%] p-4 md:p-8">
             {loading ? (
-                <Loader /> // Show loader while loading
+                <Loader />
             ) : (
                 <>
-                    <h1 className="text-4xl font-bold mb-6 text-center">Оплата</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">Оплата</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div className="bg-white p-6 rounded-lg shadow-md text-center">
                             <FaMoneyBill className="text-3xl mb-4 mx-auto" />
@@ -40,21 +39,21 @@ const Payment = () => {
                             <p>Оплатить с помощью банковского перевода (по счету), для юридических лиц, так и для физических лиц.</p>
                         </div>
                     </div>
-                    <div className='flex mt-5 content-center m-auto justify-between w-[68%] gap-6 '>
-                        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div className='flex flex-col md:flex-row mt-5 content-center m-auto justify-between gap-6'>
+                        <div className="bg-white p-6 rounded-lg shadow-md text-center flex-1">
                             <FaQrcode className="text-3xl mb-4 mx-auto" />
                             <h2 className="text-xl font-semibold mb-2">Кредит</h2>
                             <p>Возможность приобрести товар в кредит. Подробнее об условиях и банках партнерах читайте в разделе «Кредит».</p>
                         </div>
 
-                        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div className="bg-white p-6 rounded-lg shadow-md text-center flex-1">
                             <FaQrcode className="text-3xl mb-4 mx-auto" />
                             <h2 className="text-xl font-semibold mb-2">QR-Код (СБП)</h2>
                             <p>Система быстрых платежей. Вы можете оплатить заказ, отсканировав QR-код в мобильном приложении вашего банка.</p>
                         </div>
                     </div>
-                    <div className='w-[75%] pt-16'>
-                        <h1 className="text-4xl font-bold mb-6">Система быстрых платежей (QR-Код)</h1>
+                    <div className='w-full pt-16'>
+                        <h1 className="text-3xl md:text-4xl font-bold mb-6">Система быстрых платежей (QR-Код)</h1>
                         <p className="mb-4">
                             Платежи по QR-коду через СБП максимально удобны для онлайн-оплаты покупок, они быстрее классических карточных платежей.
                             Так, на сайте «Сибирь Колесо» покупателю достаточно выбрать способ оплаты через СБП.
@@ -88,8 +87,8 @@ const Payment = () => {
                             Политика обработки персональных данных.
                         </p>
                     </div>
-                    <div className='w-[75%] pt-16'>
-                        <h1 className="text-4xl font-bold mb-6">Возврат дисков</h1>
+                    <div className='w-full pt-16'>
+                        <h1 className="text-3xl md:text-4xl font-bold mb-6">Возврат дисков</h1>
                         <p className="mb-4">
                             Перед монтажом шин на диск (в течение 2-х недель после покупки) обязательно примерьте диск на автомобиль.
                             Убедитесь, что диск ни за что не задевает (тормозной механизм, стойки подвески и т.д.).

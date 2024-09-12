@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    font-family: sans-serif;
+}
+
+.hamburger-menu {
+    width: 14px;
+    height: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+
+.hamburger-menu:hover .line:nth-child(3) {
+    width: 50%;
+}

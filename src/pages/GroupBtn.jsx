@@ -4,17 +4,16 @@ import { TbSnowflake } from "react-icons/tb";
 import { GiStitchedWound } from "react-icons/gi";
 
 const GroupBtn = () => {
-    const [activeButton, setActiveButton] = useState(2); // Defaultda 2-button active
-    const [showThirdButton, setShowThirdButton] = useState(true); // 3-button 2-button active bo'lganda ko'rinadi
+    const [activeButton, setActiveButton] = useState(2);
+    const [showThirdButton, setShowThirdButton] = useState(true); 
 
     const handleButtonClick = (buttonIndex) => {
         setActiveButton(buttonIndex);
 
-        // Faqat 2-buttonga bosilganda 3-button ko'rinadi, boshqa buttonlar bosilganda yo'qoladi
         if (buttonIndex === 2) {
             setShowThirdButton(true);
         } else if (buttonIndex !== 3) {
-            setShowThirdButton(false); // 3-button bosilganda yo'q bo'lmasligi kerak
+            setShowThirdButton(false);
         }
     };
 

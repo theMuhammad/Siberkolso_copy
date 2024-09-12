@@ -21,8 +21,8 @@ const OpenSelect = ({ name, options, onChange }) => {
                     <li
                         key={index}
                         className={`flex items-center text-[#666666] py-4 cursor-pointer ${selectedOption === option
-                                ? "bg-[#FF5200]" // Tanlangan holatda
-                                : "hover:bg-[#e1e1e1]" // Hover holatida
+                            ? "bg-[#FF5200]" // Tanlangan holatda
+                            : "hover:bg-[#e1e1e1]" // Hover holatida
                             }`}
                         onClick={() => handleSelect(option)} // Tanlash uchun faqat onClick
                         onMouseEnter={() => setHoveredOption(option)} // Hover boshlanishi
