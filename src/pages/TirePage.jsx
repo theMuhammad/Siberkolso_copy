@@ -14,10 +14,10 @@ export default function DiskPage() {
     const [activeButton, setActiveButton] = useState(1); // Default active button
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [isOpen, setIsOpen] = useState({
-        width: false,
-        height: false,
-        diameter: false,
-        manufacturer: false,
+        width: true, // Ochiq boshlash
+        height: true, // Ochiq boshlash
+        diameter: true, // Ochiq boshlash
+        manufacturer: true, // Ochiq boshlash
     });
 
     const allDisks = [
@@ -74,61 +74,62 @@ export default function DiskPage() {
     };
 
     return (
-        <div className="disk-page w-full bg-[#282828] p-4 shadow-md">
-            <div className="max-w-[1140px] mx-auto">
-                <ButtonGroup activeButton={activeButton} onButtonClick={handleButtonClick} />
-                <div className="mb-4">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        {["width", "height", "diameter", "manufacturer"].map((param) => (
-                            <div key={param}>
-                                <h3
-                                    className="py-5 hover:text-orange-500 text-[#666666] bg-white rounded-t-md px-4 text-[13px] duration-300 cursor-pointer"
-                                    onClick={() => toggleSection(param)}
-                                >
-                                    {param.charAt(0).toUpperCase() + param.slice(1)}
-                                </h3>
-                                {isOpen[param] && (
-                                    <OpenSelect
-                                        options={
-                                            param === "width" ? [
-                                                "10.5", "12.5", "135", "145", "155", "165", "175", "185",
-                                                "195", "205", "215", "225", "235", "245", "255", "265",
-                                                "275", "285", "295", "305", "315", "325", "335",
-                                            ] : param === "height" ? [
-                                                "25", "30", "31", "35", "40", "45", "50", "55", "60",
-                                                "65", "70", "75", "80", "85",
-                                            ] : param === "diameter" ? [
-                                                "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19",
-                                                "R20", "R21", "R22", "R23", "R24",
-                                            ] : [
-                                                "APTANY", "Altenzo", "Antares", "Aplus", "Arivo"
-                                            ]
-                                        }
-                                        onChange={handleChange}
-                                        name={param}
-                                    />
-                                )}
-                            </div>
-                        ))}
+        <>
+            <div className="disk-page w-full bg-[#282828] p-4 shadow-md">
+                <div className="max-w-[1140px] mx-auto">
+                    <ButtonGroup activeButton={activeButton} onButtonClick={handleButtonClick} />
+                    <div className="mb-4">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            {["width", "height", "diameter", "manufacturer"].map((param) => (
+                                <div key={param}>
+                                    <h3
+                                        className="py-5 hover:text-orange-500 text-[#666666] bg-white rounded-t-md px-4 text-[13px] duration-300 cursor-pointer"
+                                        onClick={() => toggleSection(param)}
+                                    >
+                                        {param.charAt(0).toUpperCase() + param.slice(1)}
+                                    </h3>
+                                    {isOpen[param] && (
+                                        <OpenSelect
+                                            options={
+                                                param === "width" ? [
+                                                    "10.5", "12.5", "135", "145", "155", "165", "175", "185",
+                                                    "195", "205", "215", "225", "235", "245", "255", "265",
+                                                    "275", "285", "295", "305", "315", "325", "335",
+                                                ] : param === "height" ? [
+                                                    "25", "30", "31", "35", "40", "45", "50", "55", "60",
+                                                    "65", "70", "75", "80", "85",
+                                                ] : param === "diameter" ? [
+                                                    "R12", "R13", "R14", "R15", "R16", "R17", "R18", "R19",
+                                                    "R20", "R21", "R22", "R23", "R24",
+                                                ] : [
+                                                    "APTANY", "Altenzo", "Antares", "Aplus", "Arivo"
+                                                ]
+                                            }
+                                            onChange={handleChange}
+                                            name={param}
+                                        />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <GroupBtn />
+                    <div className="w-full flex gap-8 justify-center mb-4">
+                        <button
+                            className="px-6 bg-[#666666] text-sm text-white py-3 rounded-md hover:bg-gray-600"
+                            onClick={handleSearch}
+                        >
+                            Поиск
+                        </button>
+                        <button
+                            className="px-6 flex items-center content-center gap-2 bg-[#666666] text-sm text-white py-3 rounded-md hover:bg-gray-600"
+                            onClick={handleReset}
+                        >
+                            <MdCancel /> Сбросить
+                        </button>
                     </div>
                 </div>
-                <GroupBtn />
-                <div className="w-full flex gap-8 justify-center mb-4">
-                    <button
-                        className="px-6 bg-[#666666] text-sm text-white py-3 rounded-md hover:bg-gray-600"
-                        onClick={handleSearch}
-                    >
-                        Поиск
-                    </button>
-                    <button
-                        className="px-6 flex items-center content-center gap-2 bg-[#666666] text-sm text-white py-3 rounded-md hover:bg-gray-600"
-                        onClick={handleReset}
-                    >
-                        <MdCancel /> Сбросить
-                    </button>
-                </div>
-            </div>
-            <div className="mt-4 bg-white p-4 rounded-md">
+            </div>            <div className="mt-4 bg-white p-4 rounded-md">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                     {filteredProducts.length > 0 ? (
                         filteredProducts.map((product, index) => (
@@ -141,10 +142,9 @@ export default function DiskPage() {
                             </div>
                         ))
                     ) : (
-                        <p className="text-center w-full">Нет доступных продуктов</p>
-                    )}
+                        <></>)}
                 </div>
             </div>
-        </div>
+        </>
     );
 }

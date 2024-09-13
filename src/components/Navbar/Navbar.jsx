@@ -1,10 +1,11 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MdShoppingCart } from "react-icons/md";
-import { FiX } from "react-icons/fi"; // Menu and X icons
+import { FiX } from "react-icons/fi"; 
 import { PiTireBold } from "react-icons/pi";
 import { GiCarWheel } from "react-icons/gi";
-import { CartContext } from "../../pages/CartProvider"; // Import CartContext
+import { CartContext } from "../../pages/CartProvider";
+import Logo from "../../../public/Logo.png"
 
 const ArrowButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,12 +13,12 @@ const ArrowButton = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen); // Control drawer and button
+    setIsOpen(!isOpen); 
   };
 
   const toggleCartDrawer = () => {
     if (cartItems.length > 0) {
-      setIsDrawerOpen(!isDrawerOpen); // Toggle cart drawer
+      setIsDrawerOpen(!isDrawerOpen); 
     }
   };
 
@@ -26,12 +27,8 @@ const ArrowButton = () => {
   };
 
   const handleLinkClick = () => {
-    setIsOpen(false); // Close the menu when a link is clicked
+    setIsOpen(false); 
   };
-
-  //   const handleRemoveItem = (productId) => {
-  //     removeFromCart(productId);
-  //   };
 
   return (
     <>
@@ -42,8 +39,7 @@ const ArrowButton = () => {
               to="/"
               className="font-bold text-xl flex items-center gap-x-3"
             >
-              <img src="/logo.png" className="w-[34px] h-[34px]" alt="logo" />
-              Сибирь Колесо
+              <img src={Logo} className="w-[150%] h-[44px]" alt="logo" />
             </Link>
             <span className="h-[34px] w-[1px] bg-slate-300"></span>
             <div className="flex items-center gap-x-7">
@@ -73,7 +69,6 @@ const ArrowButton = () => {
             <button
               onClick={toggleCartDrawer}
               className="flex items-center content-center cursor-pointer text-black hover:text-[#FF5601] duration-300"
-              //   disabled={cartItems.length === 0}
             >
               <span className="material-symbols-outlined size-5 mb-2 text-lg hover:text-[#FF5601] text-[#8e8e8e] duration-300">
                 <MdShoppingCart />
@@ -88,73 +83,80 @@ const ArrowButton = () => {
         </div>
       </header>
 
-      {/* Drawer for main button */}
       <div
         className={`fixed left-0 right-0 top-15 bg-white border-t border-slate-200 transition-transform duration-300 ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
-        style={{ height: "33vh" }} // Drawer height is 1/3 of the screen
+        style={{ height: "33vh" }} 
       >
-        <div className="w-[75%] m-auto py-5 flex justify-between items-center">
-          <Link
-            to="/tires"
-            className="flex hover:text-orange-600 cursor-pointer flex-col items-center mb-4 duration-500"
-            onClick={handleLinkClick}
-          >
-            <span className="text-7xl pb-3">
-              <PiTireBold />
-            </span>
-            <span className="text-lg font-semibold">Шины</span>
-            <span className="text-sm">36 655 моделей</span>
-          </Link>
-          <Link
-            to="/wheels"
-            className="flex flex-col hover:text-orange-600 duration-500 cursor-pointer items-center mb-4"
-            onClick={handleLinkClick}
-          >
-            <span className="text-7xl pb-3">
-              <GiCarWheel />
-            </span>
-            <span className="text-lg font-semibold">Диски</span>
-            <span className="text-sm">11 144 модели</span>
-          </Link>
-          <div className="flex flex-col items-start mb-2">
+        <div className="w-[75%] m-auto py-5 flex gap-5 items-center">
+        <div className="flex justify-between w-[25%]">
             <Link
-              to="/about"
-              className="hover:text-orange-600 cursor-pointer mb-1"
+              to="/tires"
+              className="flex hover:text-orange-600 cursor-pointer flex-col items-center mb-4 duration-500"
               onClick={handleLinkClick}
             >
-              О компании
+              <span className="text-7xl pb-3">
+                <PiTireBold />
+              </span>
+              <span className="text-lg font-semibold">Шины</span>
+              <span className="text-sm">36 655 моделей</span>
             </Link>
             <Link
-              to="/contacts"
-              className="hover:text-orange-600 cursor-pointer mb-1"
+              to="/wheels"
+              className="flex flex-col hover:text-orange-600 duration-500 cursor-pointer items-center mb-4"
               onClick={handleLinkClick}
             >
-              Контакты
+              <span className="text-7xl pb-3">
+                <GiCarWheel />
+              </span>
+              <span className="text-lg font-semibold">Диски</span>
+              <span className="text-sm">11 144 модели</span>
+
             </Link>
-          </div>
-          <div className="flex flex-col items-start mb-2">
-            <Link
-              to="/payment"
-              className="hover:text-orange-600 cursor-pointer mb-1"
-              onClick={handleLinkClick}
-            >
-              Оплата
-            </Link>
-            <Link
-              to="/delivery"
-              className="hover:text-orange-600 cursor-pointer mb-1"
-              onClick={handleLinkClick}
-            >
-              Доставка
-            </Link>
-          </div>
-          <div className="mt-4 text-center">
-            <h2 className="font-bold">Единая справочная</h2>
-            <p className="text-3xl">8 800 775-10-50</p>
-            <p>+7 (383) 388-55-32</p>
-          </div>
+        </div>
+          <div className="border-l-4  rounded  border-gray-300 h-40 mx-auto"></div>
+
+ <div className="flex items-center justify-between w-[55%]">
+            <div className="flex flex-col justify-between items-start mb-2">
+
+              <Link
+                to="/about"
+                className="hover:text-orange-600 cursor-pointer mb-1"
+                onClick={handleLinkClick}
+              >
+                О компании
+              </Link>
+              <Link
+                to="/contacts"
+                className="hover:text-orange-600 cursor-pointer mb-1"
+                onClick={handleLinkClick}
+              >
+                Контакты
+              </Link>
+            </div>
+            <div className="flex flex-col items-start mb-2">
+              <Link
+                to="/payment"
+                className="hover:text-orange-600 cursor-pointer mb-1"
+                onClick={handleLinkClick}
+              >
+                Оплата
+              </Link>
+              <Link
+                to="/delivery"
+                className="hover:text-orange-600 cursor-pointer mb-1"
+                onClick={handleLinkClick}
+              >
+                Доставка
+              </Link>
+            </div>
+            <div className="mt-4 text-center">
+              <h2 className="font-bold">Единая справочная</h2>
+              <p className="text-3xl">8 800 775-10-50</p>
+              <p>+7 (383) 388-55-32</p>
+            </div>
+ </div>
         </div>
       </div>
 
