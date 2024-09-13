@@ -35,6 +35,7 @@ const TireList = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="">
       <div className="flex gap-x-8">
         <h3 className="mb-8 text-[13px] text-gray-500 font-light">
@@ -80,6 +81,20 @@ const TireList = () => {
           ))}
         </div>
       )}
+=======
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      {tires.map((tire) => (
+        <TireMahsulotlari
+          key={tire.id}
+          id={tire.id}
+          name={tire.name}
+          model={tire.model}
+          size={tire.size}
+          price={tire.price}
+          originalPrice={tire.originalPrice} // Add this line if available
+        />
+      ))}
+>>>>>>> 2ee8b30f2c169a85bf885a1fa0b86574fd04932f
     </div>
   );
 };

@@ -7,6 +7,10 @@ const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
     navigate(`/tire/${id}`); 
   };
 
+<<<<<<< HEAD
+=======
+const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
+>>>>>>> 2ee8b30f2c169a85bf885a1fa0b86574fd04932f
   return (
     <p
       onClick={handleClick} 
@@ -24,7 +28,11 @@ const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
       {originalPrice && (
         <p className="text-red-500 line-through">{originalPrice} ₽</p>
       )}
+<<<<<<< HEAD
     </p>
+=======
+    </Link>
+>>>>>>> 2ee8b30f2c169a85bf885a1fa0b86574fd04932f
   );
 };
 
