@@ -12,6 +12,7 @@ const TireList = () => {
           model={tire.model}
           size={tire.size}
           price={tire.price}
+          originalPrice={tire.originalPrice} // Add this line if available
         />
       ))}
     </div>

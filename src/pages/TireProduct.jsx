@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const TireProduct = ({ id, name, model, size, price }) => {
+const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
   return (
     <Link
       to={`/tire/${id}`} // Add id to the link for SingleCartPage
@@ -14,6 +14,9 @@ const TireProduct = ({ id, name, model, size, price }) => {
       <p>{model}</p>
       <p>{size}</p>
       <p className="text-lg font-semibold">{price} ₽</p>
+      {originalPrice && (
+        <p className="text-red-500 line-through">{originalPrice} ₽</p>
+      )}
     </Link>
   );
 };

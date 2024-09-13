@@ -15,6 +15,7 @@ const Footer = () => {
                     <Link to="/tires" className="cursor-pointer hover:text-orange-500 duration-200 font-bold" onClick={scrollToTop}>Шины</Link>
                     <Link to="/wheels" className="cursor-pointer hover:text-orange-500 duration-200 font-bold" onClick={scrollToTop}>Диски</Link>
                 </div>
+                
                 <div className="flex flex-col mb-4 md:mb-0">
                     <Link to="/about" className="cursor-pointer hover:text-orange-500 duration-200" onClick={scrollToTop}>О компании</Link>
                     <Link to="/contacts" className="cursor-pointer hover:text-orange-500 duration-200" onClick={scrollToTop}>Контакты</Link>
@@ -25,8 +26,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mt-4 text-center text-gray-400 text-sm">
-                <p>© 2024 Сибирь Колесо, все права защищены.</p>
-                <p>Товар резервируется после оплаты.</p>
+                <p className='text-start m-auto justify-center flex'>© Все права защищены. <br />
+                    Информация на сайте — не является публичной офертой, согласно ст. №437 Гражданского кодекса РФ. Цены действительны при заказе с сайта. Товар <br /> резервируется на сутки после поступления на склад. Цена актуальна в течении суток.</p>
             </div>
         </footer>
     );

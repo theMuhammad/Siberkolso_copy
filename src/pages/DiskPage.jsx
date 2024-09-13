@@ -117,8 +117,7 @@ export default function DiskPage() {
                             </div>
                         ))
                     ) : (
-                        <p className="text-center w-full">Нет доступных продуктов</p>
-                    )}
+                        <></>)}
                 </div>
             </div>
         </>
