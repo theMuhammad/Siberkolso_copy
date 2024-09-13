@@ -1,22 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
-  const navigate = useNavigate(); 
-
-  const handleClick = () => {
-    navigate(`/tire/${id}`); 
-  };
-
-<<<<<<< HEAD
-=======
-const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
->>>>>>> 2ee8b30f2c169a85bf885a1fa0b86574fd04932f
   return (
-    <p
-      onClick={handleClick} 
-      className="border hover:border-orange-600 transition duration-500 bg-white cursor-pointer h-96 p-3 flex flex-col justify-between items-center"
+    <Link
+      to={`/tire/${id}`} // Add id to the link for SingleCartPage
+      className="border hover:border-orange-600 transition duration-500 bg-white cursor-pointer h-96  p-3 flex flex-col justify-between items-center"
     >
       <div className="bg-gray-200 w-40 h-52 mb-2 flex items-center justify-center">
+        {/* Placeholder for the tire image */}
         <span className="text-gray-400">Image</span>
       </div>
       <div className="text-start ">
@@ -28,11 +19,7 @@ const TireProduct = ({ id, name, model, size, price, originalPrice }) => {
       {originalPrice && (
         <p className="text-red-500 line-through">{originalPrice} ₽</p>
       )}
-<<<<<<< HEAD
-    </p>
-=======
     </Link>
->>>>>>> 2ee8b30f2c169a85bf885a1fa0b86574fd04932f
   );
 };
 
