@@ -21,7 +21,7 @@ const Wheels = () => {
                     <Loader /> // Show loader while loading
                 ) : (
                     <>
-                        <h1 className="text-black font-bold text-2xl mb-4">Wheels Products</h1>
+                        <h1 className="text-black font-bold text-2xl mb-10 text-start">Wheels Products</h1>
                         <WheelsList />
                     </>
                 )}

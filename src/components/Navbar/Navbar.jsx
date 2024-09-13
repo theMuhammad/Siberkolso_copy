@@ -1,33 +1,35 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // useNavigate import qilamiz
 import { MdShoppingCart } from "react-icons/md";
-import { FiX } from "react-icons/fi"; 
+import { FiX } from "react-icons/fi";
 import { PiTireBold } from "react-icons/pi";
 import { GiCarWheel } from "react-icons/gi";
 import { CartContext } from "../../pages/CartProvider";
-import Logo from "../../../public/Logo.png"
+import Logo from "../../../public/Logo.png";
 
 const ArrowButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { cartItems, removeFromCart } = useContext(CartContext);
+  const navigate = useNavigate(); // useNavigate hook'ini chaqiramiz
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen); 
+    setIsOpen(!isOpen);
   };
 
   const toggleCartDrawer = () => {
     if (cartItems.length > 0) {
-      setIsDrawerOpen(!isDrawerOpen); 
+      setIsDrawerOpen(!isDrawerOpen);
     }
+  };
+
+  const handleLinkClick = (path) => {
+    navigate(path); // Yo'nalish bilan navigatsiya
+    setIsOpen(false);
   };
 
   const togglerefresh = () => {
     window.location.reload();
-  };
-
-  const handleLinkClick = () => {
-    setIsOpen(false); 
   };
 
   return (
@@ -35,12 +37,12 @@ const ArrowButton = () => {
       <header className="bg-white py-7 border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-[1140px] mx-auto flex items-center justify-between">
           <div className="flex gap-x-14">
-            <Link
-              to="/"
-              className="font-bold text-xl flex items-center gap-x-3"
+            <div
+              onClick={() => handleLinkClick("/")}
+              className="font-bold text-xl flex items-center gap-x-3 cursor-pointer"
             >
               <img src={Logo} className="w-[150%] h-[44px]" alt="logo" />
-            </Link>
+            </div>
             <span className="h-[34px] w-[1px] bg-slate-300"></span>
             <div className="flex items-center gap-x-7">
               <button
@@ -84,84 +86,74 @@ const ArrowButton = () => {
       </header>
 
       <div
-        className={`fixed left-0 right-0 top-15 bg-white border-t border-slate-200 transition-transform duration-300 ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
-        style={{ height: "33vh" }} 
+        className={`fixed left-0 right-0 top-15 bg-white border-t border-slate-200 transition-transform duration-300 ${isOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
+        style={{ height: "33vh" }}
       >
         <div className="w-[75%] m-auto py-5 flex gap-5 items-center">
-        <div className="flex justify-between w-[25%]">
-            <Link
-              to="/tires"
+          <div className="flex justify-between w-[25%]">
+            <p
               className="flex hover:text-orange-600 cursor-pointer flex-col items-center mb-4 duration-500"
-              onClick={handleLinkClick}
+              onClick={() => handleLinkClick("/tires")}
             >
               <span className="text-7xl pb-3">
                 <PiTireBold />
               </span>
               <span className="text-lg font-semibold">Шины</span>
               <span className="text-sm">36 655 моделей</span>
-            </Link>
-            <Link
-              to="/wheels"
+            </p>
+            <p
               className="flex flex-col hover:text-orange-600 duration-500 cursor-pointer items-center mb-4"
-              onClick={handleLinkClick}
+              onClick={() => handleLinkClick("/wheels")}
             >
               <span className="text-7xl pb-3">
                 <GiCarWheel />
               </span>
               <span className="text-lg font-semibold">Диски</span>
               <span className="text-sm">11 144 модели</span>
+            </p>
+          </div>
+          <div className="border-l-4 rounded border-gray-300 h-40 mx-auto"></div>
 
-            </Link>
-        </div>
-          <div className="border-l-4  rounded  border-gray-300 h-40 mx-auto"></div>
-
- <div className="flex items-center justify-between w-[55%]">
+          <div className="flex items-center justify-between w-[55%]">
             <div className="flex flex-col justify-between items-start mb-2">
-
-              <Link
-                to="/about"
+              <p
                 className="hover:text-orange-600 cursor-pointer mb-1"
-                onClick={handleLinkClick}
+                onClick={() => handleLinkClick("/about")}
               >
                 О компании
-              </Link>
-              <Link
-                to="/contacts"
+              </p>
+              <p
                 className="hover:text-orange-600 cursor-pointer mb-1"
-                onClick={handleLinkClick}
+                onClick={() => handleLinkClick("/contacts")}
               >
                 Контакты
-              </Link>
+              </p>
             </div>
             <div className="flex flex-col items-start mb-2">
-              <Link
-                to="/payment"
+              <p
                 className="hover:text-orange-600 cursor-pointer mb-1"
-                onClick={handleLinkClick}
+                onClick={() => handleLinkClick("/payment")}
               >
                 Оплата
-              </Link>
-              <Link
-                to="/delivery"
+              </p>
+              <p
                 className="hover:text-orange-600 cursor-pointer mb-1"
-                onClick={handleLinkClick}
+                onClick={() => handleLinkClick("/delivery")}
               >
                 Доставка
-              </Link>
+              </p>
             </div>
             <div className="mt-4 text-center">
               <h2 className="font-bold">Единая справочная</h2>
               <p className="text-3xl">8 800 775-10-50</p>
               <p>+7 (383) 388-55-32</p>
             </div>
- </div>
+          </div>
         </div>
       </div>
 
       {isDrawerOpen && (
-
         <div className="fixed right-0 top-0 h-full w-[300px] bg-white shadow-lg z-50 p-4 overflow-y-auto">
           <div className="flex justify-between items-center mb-4">
             <h2 className="font-bold text-lg">Cart</h2>
@@ -201,5 +193,3 @@ const ArrowButton = () => {
 };
 
 export default ArrowButton;
-
-
